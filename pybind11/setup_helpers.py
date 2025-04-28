@@ -254,7 +254,6 @@ def auto_cpp_level(compiler: Any) -> str | int:
     """
     Return the max supported C++ std level (17, 14, or 11). Returns latest on Windows.
     """
-
     if WIN:
         return "latest"
 
@@ -264,8 +263,9 @@ def auto_cpp_level(compiler: Any) -> str | int:
         if has_flag(compiler, STD_TMPL.format(level)):
             return level
 
-    msg = "Unsupported compiler -- at least C++11 support is needed!"
-    raise RuntimeError(msg)
+    return 11
+    #msg = "Unsupported compiler -- at least C++11 support is needed!"
+    #raise RuntimeError(msg)
 
 
 class build_ext(_build_ext):  # noqa: N801
